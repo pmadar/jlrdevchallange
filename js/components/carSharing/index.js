@@ -16,11 +16,19 @@ import {
 } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 import Person from './Person';
+import Map from './Map';
 import styles from './styles';
 
 const options = [
   { name: 'Chcem sa odviesť', toPage: 'WantRide' },
   { name: 'Môžem odviesť', toPage: 'GiveRide' },
+];
+
+const persons = [
+  { phone: '0918 111 440', name: 'Igor Minar', position: { latitude: 48.366740, longitude: 18.016979 } },
+  { phone: '0918 626 111', name: 'Miro Zaba', position: { latitude: 48.385440, longitude: 18.062984 } },
+  { phone: '0918 126 140', name: 'Jaroslav Zminak', position: { latitude: 48.378713, longitude: 18.122379 } },
+  { phone: '0914 626 111', name: 'Pavol Zaba', position: { latitude: 48.441498, longitude: 18.025219 } },
 ];
 
 class CarSharing extends Component {
@@ -108,10 +116,8 @@ class CarSharing extends Component {
               <H3 style={styles.h3}>
                 Spolujazdci:
               </H3>
-              <Person phone="0918 111 440" name="Igor Minar" />
-              <Person phone="0918 626 111" name="Miro Zaba" />
-              <Person phone="0918 126 140" name="Jaroslav Zminak" />
-              <Person phone="0914 626 111" name="Pavol Zaba" />
+              {persons.map(({ phone, name }) =>
+                <Person key={name} phone={phone} name={name} />)}
               <Button
                 style={styles.successButton}
                 block
@@ -126,6 +132,7 @@ class CarSharing extends Component {
               </Button>
             </View>
           </View>}
+          {isCreated && <Map persons={persons} />}
           {(!isCreated && !isJoined) &&
             <Grid style={styles.mt}>
               {options.map(({ name, toPage }) => (

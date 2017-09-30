@@ -58,13 +58,10 @@ class Home extends Component {
               transparent
               onPress={() => {
                 AsyncStorage.removeItem('employeeId').then(() => {
-                  DrawerNav.dispatch(
-                    NavigationActions.reset({
-                      index: 0,
-                      actions: [NavigationActions.navigate({ routeName: 'Home' })],
-                    })
-                  );
-                  DrawerNav.goBack();
+                  NavigationActions.reset({
+                    index: 0,
+                    actions: [NavigationActions.navigate({ routeName: 'Home' })],
+                  });
                 });
               }}
             >
@@ -84,9 +81,7 @@ class Home extends Component {
                   disabled={isCarShareSelected && toPage !== 'CarSharing'}
                   bordered={!(isCarShareSelected && toPage === 'CarSharing')}
                   style={styles.row}
-                  onPress={() =>
-                    this.props.navigation.navigate(toPage, { name })
-                  }
+                  onPress={() => this.props.navigation.navigate(toPage, { name })}
                 >
                   <Text style={styles.text}>{name}</Text>
                 </Button>

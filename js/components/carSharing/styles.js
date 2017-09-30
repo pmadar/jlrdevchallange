@@ -1,3 +1,5 @@
+import { StyleSheet } from 'react-native';
+
 export default {
   container: {
     backgroundColor: '#FBFAFA',
@@ -32,7 +34,8 @@ export default {
     marginTop: 10,
   },
   successButton: {
-    marginTop: 70,
+    marginTop: 50,
+    marginBottom: 20,
   },
   successIcon: {
     alignSelf: 'center',
@@ -42,5 +45,10 @@ export default {
   },
   callButton: {
     paddingLeft: 0,
+  },
+  mapContainer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 };
