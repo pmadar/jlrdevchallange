@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { AsyncStorage } from 'react-native';
-import { DrawerNavigator, NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation';
 import {
   Container,
   Header,
@@ -14,11 +14,7 @@ import {
   Right,
 } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
-import BlankPage2 from '../blankPage2';
-import DrawBar from '../DrawBar';
 import styles from './styles';
-
-let DrawerNav = null;
 
 class Home extends Component {
   static navigationOptions = {
@@ -76,7 +72,7 @@ class Home extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Domov</Title>
+            <Title>JLR</Title>
           </Body>
           <Right />
         </Header>
@@ -103,21 +99,4 @@ class Home extends Component {
   }
 }
 
-const DrawNav = DrawerNavigator( // eslint-disable-line
-  {
-    Home: { screen: Home },
-    BlankPage2: { screen: BlankPage2 },
-  },
-  {
-    contentComponent: props => <DrawBar {...props} />,
-  }
-);
-
-DrawNav.navigationOptions = ({ navigation }) => {
-  DrawerNav = navigation;
-  return {
-    header: null,
-  };
-};
-
-export default DrawNav;
+export default Home;
